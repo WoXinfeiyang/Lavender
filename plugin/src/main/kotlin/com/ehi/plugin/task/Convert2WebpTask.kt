@@ -113,6 +113,7 @@ internal open class Convert2WebpTask : DefaultTask() {
     }
 
     private fun optimizeImage(file: File) {
+        println("##optimizeImage##File.path=${if(file!=null) file.absolutePath else null}")
         val path: String = file.path
         if (File(path).exists()) {
             oldSize += File(path).length()
