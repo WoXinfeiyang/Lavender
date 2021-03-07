@@ -16,6 +16,7 @@ import java.util.concurrent.Future
 
 internal open class Convert2WebpTask : DefaultTask() {
 
+    private val TAG:String=Convert2WebpTask::class.java.simpleName+": "
     private lateinit var config: Convert2WebpExtension
 
     var bigImageList = ArrayList<String>()
@@ -27,6 +28,8 @@ internal open class Convert2WebpTask : DefaultTask() {
     fun doAction() {
         config = project.extensions
             .findByType(Convert2WebpExtension::class.java) ?: return
+
+        println(TAG+"##doAction##Convert2WebpExtension=${config}")
 
         val hasAppPlugin = project.plugins.hasPlugin("com.android.application")
         val variants = if (hasAppPlugin) {
@@ -189,6 +192,7 @@ internal open class Convert2WebpTask : DefaultTask() {
     }
 
     private fun checkCwebpTools() {
+        println(TAG+"##checkCwebpTools##config.cwebpToolsDir.isBlank()=${config.cwebpToolsDir.isBlank()},project.rootDir.path=${project.rootDir.path},config.cwebpToolsDir=${config.cwebpToolsDir}")
         if (config.cwebpToolsDir.isBlank()) {
             WebpToolBean.setRootDir(project.rootDir.path)
         } else {
