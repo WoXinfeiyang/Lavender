@@ -109,7 +109,7 @@ internal open class Convert2WebpTask : DefaultTask() {
                 try {
                     f.get()
                 } catch (e: Exception) {
-                    println("EHiPlugin Convert2WebpTask#dispatchOptimizeTask() execute wrong.")
+                    println("EHiPlugin Convert2WebpTask#dispatchOptimizeTask() execute wrong.Exception Message${e.message}")
                 }
             }
         }
@@ -198,6 +198,7 @@ internal open class Convert2WebpTask : DefaultTask() {
         } else {
             WebpToolBean.setRootDir(config.cwebpToolsDir)
         }
+        println(TAG+"##checkCwebpTools##ToolsDirPath=${WebpToolBean.getToolsDirPath()}")
         if (!WebpToolBean.getToolsDir().exists()) {
             throw GradleException("EHiPlugin 'convert2Webp' task need cwebp tool.")
         }
