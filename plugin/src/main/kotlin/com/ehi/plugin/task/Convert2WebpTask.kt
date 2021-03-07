@@ -109,7 +109,7 @@ internal open class Convert2WebpTask : DefaultTask() {
                 try {
                     f.get()
                 } catch (e: Exception) {
-                    println("EHiPlugin Convert2WebpTask#dispatchOptimizeTask() execute wrong.Exception Message${e.message}")
+                    println("EHiPlugin Convert2WebpTask#dispatchOptimizeTask() execute wrong.Exception Message=${e.message}")
                 }
             }
         }
