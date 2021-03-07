@@ -19,10 +19,10 @@ object WebpToolBean {
     }
 
     fun getToolsDir(): File {
-        return File("$rootDir/tools/cwebp")
+        return File("$rootDir\\tools\\cwebp")
     }
 
     fun getToolsDirPath(): String {
-        return "$rootDir/tools/cwebp"
+        return "$rootDir\\tools\\cwebp"
     }
 }
