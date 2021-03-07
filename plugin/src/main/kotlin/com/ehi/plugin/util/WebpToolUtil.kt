@@ -10,20 +10,23 @@ import com.ehi.plugin.bean.WebpToolBean
 class WebpToolUtil {
 
     companion object {
+        val TAG=WebpToolUtil::class.java.simpleName+": "
 
         fun cmd(cmd: String, params: String) {
             val system = System.getProperty("os.name")
             val cmdStr = when (system) {
                 "Windows" ->
-                    "${WebpToolBean.getToolsDirPath()}/windows/$cmd $params"
+                    "${WebpToolBean.getToolsDirPath()}\\windows\\cwebp.exe $params"
                 "Mac OS X" ->
                     "${WebpToolBean.getToolsDirPath()}/mac/$cmd $params"
-                else -> ""
+                else -> "${WebpToolBean.getToolsDirPath()}\\windows\\cwebp.exe $params"
             }
+
             if (cmd == "") {
                 println("Cwebp can't support this system.")
                 return
             }
+            println(TAG+"##cmd##cmdStr=${cmdStr},system=${system}");
             outputMessage(cmdStr)
         }
 
