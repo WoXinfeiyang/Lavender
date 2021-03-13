@@ -14,12 +14,12 @@ class WebpToolUtil {
 
         fun cmd(cmd: String, params: String) {
             val system = System.getProperty("os.name")
-            val cmdStr = when (system) {
-                "Windows" ->
-                    "${WebpToolBean.getToolsDirPath()}\\windows\\cwebp.exe $params"
-                "Mac OS X" ->
-                    "${WebpToolBean.getToolsDirPath()}/mac/$cmd $params"
-                else -> "${WebpToolBean.getToolsDirPath()}\\windows\\cwebp.exe $params"
+
+            var cmdStr="${WebpToolBean.getToolsDirPath()}\\windows\\cwebp.exe $params";
+            if(system.contains("Windows")){
+                cmdStr="${WebpToolBean.getToolsDirPath()}\\windows\\cwebp.exe $params";
+            }else if(system.contains("Mac OS X")){
+                cmdStr="${WebpToolBean.getToolsDirPath()}/mac/$cmd $params";
             }
 
             if (cmd == "") {
