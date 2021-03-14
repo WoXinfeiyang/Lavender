@@ -15,9 +15,6 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import androidx.annotation.FloatRange;
-
 import java.text.DecimalFormat;
 
 /**
@@ -133,8 +130,10 @@ public class FPSDetector {
             fpsText.setTextSize(size);
             return this;
         }
-
-        public Program alpha(@FloatRange(from = 0.0, to = 1.0) float alpha) {
+        /**
+         * @param alpha 取值范围0.0~1.0
+         * */
+        public Program alpha(float alpha) {
             fpsText.setAlpha(alpha);
             return this;
         }
