@@ -15,7 +15,9 @@ import java.util.*
  * Desc: Plugin
  */
 class EHiPlugin : Plugin<Project> {
-
+    companion object{
+        val TAG=EHiPlugin::class.java.simpleName+":"
+    }
     override fun apply(project: Project) {
 
         println("apply plugin: 'com.ehi.plugin'")
@@ -36,6 +38,7 @@ class EHiPlugin : Plugin<Project> {
                     ServiceLoader.load(VariantProcessor::class.java, javaClass.classLoader)
                         .toList().let { processes ->
                             android.applicationVariants.forEach { variant ->
+                                println(TAG+"AppExtension variant.name=${variant.name}, android.getClassCanonicalName=${android.javaClass.canonicalName}")
                                 processes.forEach {
                                     it.process(variant)
                                 }
@@ -51,6 +54,7 @@ class EHiPlugin : Plugin<Project> {
                     ServiceLoader.load(VariantProcessor::class.java, javaClass.classLoader)
                         .toList().let { processes ->
                             android.libraryVariants.forEach { variant ->
+                                println(TAG+"LibraryExtension variant.name=${variant.name}")
                                 processes.forEach {
                                     it.process(variant)
                                 }

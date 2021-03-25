@@ -18,7 +18,7 @@ internal open class Convert2WebpTask : DefaultTask() {
 
     private val TAG:String=Convert2WebpTask::class.java.simpleName+": "
     private lateinit var config: Convert2WebpExtension
-
+    /**没有加入大图白名单的图片文件集合*/
     var bigImageList = ArrayList<String>()
 
     private var oldSize = 0L
@@ -82,7 +82,9 @@ internal open class Convert2WebpTask : DefaultTask() {
             println("------------------------------------")
         }
     }
-
+    /**图片转换webp任务
+     * @param imageFileList 需要转换成webp图片的图片资源文件集合
+     * */
     private fun dispatchOptimizeTask(imageFileList: java.util.ArrayList<File>) {
         if (imageFileList.size == 0 || bigImageList.isNotEmpty()) {
             return
@@ -152,7 +154,11 @@ internal open class Convert2WebpTask : DefaultTask() {
             throw GradleException(stringBuffer.toString())
         }
     }
-
+    /**
+     * 遍历资源文件夹
+     * @param file 被遍历文件的File对象,如果file对象是单个文件检查是图片文件则加入到imageFileList;如果是文件夹则递归遍历.
+     * @param imageFileList 需要转换的图片资源文件集合
+     * */
     private fun traverseResDir(
         file: File,
         imageFileList: ArrayList<File>,

@@ -27,6 +27,7 @@ class ImageUtil {
             return false
         }
 
+        /**将一个图片文件转换成.webp图片*/
         fun convert2Webp(imgFile: File) {
             if (isImage(imgFile)) {
                 val webpFile =
